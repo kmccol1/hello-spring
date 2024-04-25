@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@ResponseBody
+@RequestMapping("hello")
 public class HelloController
 {
 //    @GetMapping("hello") //argument represents the URL pattern...
@@ -14,7 +16,7 @@ public class HelloController
 //    }
 
     @GetMapping("goodbye") //argument represents the URL pattern...
-    @ResponseBody //plain text response, no template
+//    @ResponseBody //plain text response, no template
     public String goodbye()
     {
         return "Goodbye, Spring!";
@@ -22,21 +24,21 @@ public class HelloController
 
     //@GetMapping("hello")
     @RequestMapping(method={RequestMethod.GET, RequestMethod.POST}, value="hello")
-    @ResponseBody
+//    @ResponseBody
     public String helloWithQueryParam(@RequestParam String name)
     {
         return "Hello," + name + "!";
     }
 
     @GetMapping("hello/{name}")
-    @ResponseBody
+//    @ResponseBody
     public String helloWithPathParam(@PathVariable String name)
     {
         return "Hello," + name + "!";
     }
 
     @GetMapping("form")
-    @ResponseBody
+//    @ResponseBody
     public String helloForm()
     {
         return "<html>" +
